@@ -1,0 +1,192 @@
+App Name: phire
+Username: John F Schank III
+MD5 Hash: fd474be3b40e2b37e592b21679c7d6f8
+
+POST
+{"username": "fd474be3b40e2b37e592b21679c7d6f8", "devicetype": "phire"}
+
+if no button pressed receive: {"error":{"type":101,"address":"/","description":"link button not pressed"}}
+press button, and receive: {"success":{"username":"key"}}
+
+GET Requests:
+Interrogate: http://192.168.1.12/api/fd474be3b40e2b37e592b21679c7d6f8
+
+Gem should:
+* Present usage and die if no parameters
+* Check for registry of user name, prompting to press button if needed.
+
+
+
+Example Iterrogation reply
+{
+    "lights": {
+        "1": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "hue": 14922,
+                "sat": 144,
+                "xy": [
+                    0.4595,
+                    0.4105
+                ],
+                "ct": 369,
+                "alert": "none",
+                "effect": "none",
+                "colormode": "ct",
+                "reachable": true
+            },
+            "type": "Extended color light",
+            "name": "Hue Lamp 1",
+            "modelid": "LCT001",
+            "swversion": "65003148",
+            "pointsymbol": {
+                "1": "none",
+                "2": "none",
+                "3": "none",
+                "4": "none",
+                "5": "none",
+                "6": "none",
+                "7": "none",
+                "8": "none"
+            }
+        },
+        "2": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "hue": 14922,
+                "sat": 144,
+                "xy": [
+                    0.4595,
+                    0.4105
+                ],
+                "ct": 369,
+                "alert": "none",
+                "effect": "none",
+                "colormode": "ct",
+                "reachable": true
+            },
+            "type": "Extended color light",
+            "name": "Hue Lamp 2",
+            "modelid": "LCT001",
+            "swversion": "65003148",
+            "pointsymbol": {
+                "1": "none",
+                "2": "none",
+                "3": "none",
+                "4": "none",
+                "5": "none",
+                "6": "none",
+                "7": "none",
+                "8": "none"
+            }
+        },
+        "3": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "hue": 14922,
+                "sat": 144,
+                "xy": [
+                    0.4595,
+                    0.4105
+                ],
+                "ct": 369,
+                "alert": "none",
+                "effect": "none",
+                "colormode": "ct",
+                "reachable": true
+            },
+            "type": "Extended color light",
+            "name": "Hue Lamp 3",
+            "modelid": "LCT001",
+            "swversion": "65003148",
+            "pointsymbol": {
+                "1": "none",
+                "2": "none",
+                "3": "none",
+                "4": "none",
+                "5": "none",
+                "6": "none",
+                "7": "none",
+                "8": "none"
+            }
+        },
+        "4": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "hue": 14922,
+                "sat": 144,
+                "xy": [
+                    0.4595,
+                    0.4105
+                ],
+                "ct": 369,
+                "alert": "none",
+                "effect": "none",
+                "colormode": "ct",
+                "reachable": true
+            },
+            "type": "Extended color light",
+            "name": "Hue Lamp 4",
+            "modelid": "LCT001",
+            "swversion": "65003148",
+            "pointsymbol": {
+                "1": "none",
+                "2": "none",
+                "3": "none",
+                "4": "none",
+                "5": "none",
+                "6": "none",
+                "7": "none",
+                "8": "none"
+            }
+        }
+    },
+    "groups": {},
+    "config": {
+        "name": "Philips hue",
+        "mac": "00:17:88:09:41:58",
+        "dhcp": true,
+        "ipaddress": "192.168.1.12",
+        "netmask": "255.255.255.0",
+        "gateway": "192.168.1.1",
+        "proxyaddress": "",
+        "proxyport": 0,
+        "UTC": "2013-02-27T19:15:15",
+        "whitelist": {
+            "9b428c8fd957f1ebbeba65e18857651b": {
+                "last use date": "2013-02-27T03:46:53",
+                "create date": "2012-12-25T01:37:47",
+                "name": "Johno's Pad"
+            },
+            "a3d7fc79505c2326b11f8ac133f2c790": {
+                "last use date": "2013-02-26T03:50:13",
+                "create date": "2012-12-25T02:05:00",
+                "name": "Breezy’s iPad"
+            },
+            "d85af736e63ca881b11027cc6b4d80bb": {
+                "last use date": "2013-01-27T01:42:57",
+                "create date": "2012-12-29T22:30:14",
+                "name": "iJohno"
+            },
+            "fd474be3b40e2b37e592b21679c7d6f8": {
+                "last use date": "2013-02-27T19:15:15",
+                "create date": "2013-02-27T19:14:41",
+                "name": "phire"
+            }
+        },
+        "swversion": "01003542",
+        "swupdate": {
+            "updatestate": 0,
+            "url": "",
+            "text": "",
+            "notify": false
+        },
+        "linkbutton": false,
+        "portalservices": true
+    },
+    "schedules": {}
+}
