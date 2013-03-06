@@ -16,15 +16,6 @@ task :find_hue do
     Socket.do_not_reverse_lookup = orig
   end
   
-  # def probe(ip)
-  #   begin
-  #     response = HTTParty.get("http://" + ip.to_s + "/api/0/config", :timeout => 3)
-  #   rescue
-  #     response = nil
-  #   end
-  #   response
-  # end
-
   my_ip = IPAddress.parse(local_ip + "/24")
   puts "Searching for Hue Hub on network #{my_ip}:"
   
