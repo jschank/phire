@@ -14,7 +14,12 @@ Interrogate: http://192.168.1.12/api/fd474be3b40e2b37e592b21679c7d6f8
 Gem should:
 * Present usage and die if no parameters
 * Check for registry of user name, prompting to press button if needed.
-
+* the hub object should wrap (include) HTTParty
+** it should support the query and discovery methods.
+** The rake task implementation should move into the hub object, and it should support the finding
+** Once found, a dotfile should be created for the IP address. For future requests.
+* there should be light objects also, the hub should create them from the interrogation
+* updated light objects should be submitted to the hub to fire the changes.
 
 
 Example Iterrogation reply

@@ -2,7 +2,7 @@ require "bundler/gem_tasks"
 
 require 'socket'
 require 'ipaddress'
-require 'httparty'
+require 'phire'
 desc "Find the Hue ip address on the local network"
 task :find_hue do
   def local_ip
@@ -16,26 +16,26 @@ task :find_hue do
     Socket.do_not_reverse_lookup = orig
   end
   
-  def probe(ip)
-    begin
-      response = HTTParty.get("http://" + ip.to_s + "/api/0/config", :timeout => 3)
-    rescue
-      response = nil
-    end
-    response
-  end
+  # def probe(ip)
+  #   begin
+  #     response = HTTParty.get("http://" + ip.to_s + "/api/0/config", :timeout => 3)
+  #   rescue
+  #     response = nil
+  #   end
+  #   response
+  # end
 
   my_ip = IPAddress.parse(local_ip + "/24")
   puts "Searching for Hue Hub on network #{my_ip}:"
   
-  sw_version = "Not Found"
-  hub_ip = my_ip.detect do |address|    
+  hub_address = my_ip.detect do |address|
     print "."
-    response = probe(address)
-    sw_version = response.parsed_response["swversion"] if response && response.code == 200 && response.parsed_response["name"] == "Philips hue"
+    Phire::Hub.new(address).available?
   end
   puts
-  puts "Philips Hue Hub found at #{hub_ip}. Software version: #{sw_version}"
+  
+  hub = Phire::Hub.new(hub_address)
+  puts "Philips Hue Hub found at #{hub.location}. Software version: #{hub.version}"
 end
 
 
