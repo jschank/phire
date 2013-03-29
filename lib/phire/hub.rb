@@ -35,10 +35,14 @@ module Phire
         puts "Exeption: #{e.message}"
         false
     end
+    
+    def request(path, key = API_KEY)
+      @last_response = self.class.get("/api/#{key}/#{path}", :timeout => TIMEOUT)
+    end
       
     def version
-      @last_response = self.class.get("/api/0/config", :timeout => TIMEOUT)
-      version = @last_response.parsed_response["swversion"] if @last_response && @last_response.code == 200 && @last_response.parsed_response["name"] == "Philips hue"
+      response = request("config", 0)
+      version = response.parsed_response["swversion"] || "unknown"
     rescue
       report_last_response
     end    
@@ -60,6 +64,13 @@ module Phire
           end
         end
         return false
+      end
+    end
+       
+    def lights
+      lights = request("lights")
+      lights.keys.map do |light|
+        Light.new(request("lights/#{light}").parsed_response)
       end
     end
             
