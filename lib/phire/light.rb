@@ -1,9 +1,13 @@
 module Phire
   
   class Light 
+    
+    attr_reader :id
         
-    def initialize(attributes = {})
+    def initialize(hub, id, attributes = {})
       @attributes = attributes
+      @hub = hub
+      @id = id
     end
         
     def method_missing(name, *args)
@@ -19,7 +23,11 @@ module Phire
       end
       super
     end
-          
+    
+    def update
+      @hub.update_light(self)
+    end
+            
   end
   
 end

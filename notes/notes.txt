@@ -2,6 +2,17 @@ App Name: phire
 Username: John F Schank III
 MD5 Hash: fd474be3b40e2b37e592b21679c7d6f8
 
+Some state values won't update, and when there are errors the light does not update
+So we want the update to pull ONLY the state values that are updatable.
+Also we should create a method to convert from web/hsb to Philips scale (multiply hue by 182)
+finally, we need the hash for state to be converted back into json.
+so update should:
+get state
+strip blacklisted keys
+convert the result to json
+send it.
+
+
 POST
 {"username": "fd474be3b40e2b37e592b21679c7d6f8", "devicetype": "phire"}
 

@@ -4,6 +4,7 @@ require 'ipaddress'
 module Phire
   class Hub
     include HTTParty
+    debug_output @stdout
     
     API_KEY = "fd474be3b40e2b37e592b21679c7d6f8"
     TIMEOUT = 3    
@@ -39,6 +40,10 @@ module Phire
     def request(path, key = API_KEY)
       @last_response = self.class.get("/api/#{key}/#{path}", :timeout => TIMEOUT)
     end
+
+    def update(path, data, key = API_KEY)
+      @last_response = self.class.put("/api/#{key}/#{path}", {:body => data})      
+    end
       
     def version
       response = request("config", 0)
@@ -66,11 +71,15 @@ module Phire
         return false
       end
     end
+    
+    def update_light(light)
+      update("lights/#{light.id}/state", light.state.to_json)
+    end
        
     def lights
       lights = request("lights")
       lights.keys.map do |light|
-        Light.new(request("lights/#{light}").parsed_response)
+        Light.new(self, light, request("lights/#{light}").parsed_response)
       end
     end
             
